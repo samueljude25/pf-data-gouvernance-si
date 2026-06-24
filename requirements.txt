@@ -1,0 +1,49 @@
+# Dépendances Python — Cadre de Gouvernance des Données
+# Installation : pip install -r requirements.txt
+
+# Bibliothèques standard Python (incluses dans Python 3.10+)
+# csv, re, json, math, argparse, datetime, pathlib, collections, unicodedata
+
+# Bibliothèques optionnelles pour fonctionnalités avancées
+# Décommenter selon les besoins de votre environnement
+
+# Lecture et manipulation de données
+# pandas>=2.0.0             # Manipulation avancée de DataFrames (optionnel)
+# openpyxl>=3.1.0           # Lecture/écriture fichiers Excel
+
+# Qualité et validation des données
+# great-expectations>=0.18  # Framework de validation avancé (optionnel)
+# pydantic>=2.0             # Validation de modèles de données
+
+# MDM et déduplication
+# rapidfuzz>=3.0            # Fuzzy matching haute performance (remplace fuzzywuzzy)
+# dedupe>=2.0               # Déduplication basée sur Machine Learning
+
+# Lecture de fichiers YAML
+# pyyaml>=6.0               # Lecture des fichiers de configuration YAML
+
+# Rapports et visualisation
+# jinja2>=3.1.0             # Templates pour génération de rapports HTML
+# matplotlib>=3.7.0         # Graphiques pour les rapports qualité
+# plotly>=5.0.0             # Graphiques interactifs
+
+# Audit et logging
+# structlog>=23.0           # Logging structuré
+
+# Sécurité
+# cryptography>=41.0        # Chiffrement et hachage
+
+# Tests
+# pytest>=7.4.0             # Framework de tests unitaires
+# pytest-cov>=4.0           # Couverture de code
+
+# ============================================================
+# Les scripts du cadre sont conçus pour fonctionner avec la
+# bibliothèque standard Python uniquement (version >= 3.10).
+#
+# Installation minimale (aucune dépendance externe requise) :
+#   python profiling.py --input data/samples/dataset_brut.csv
+#   python validation.py --input data/samples/dataset_brut.csv --entite client
+#   python scoring.py --input data/samples/dataset_brut.csv --entite client
+#   python deduplication.py --input data/samples/dataset_brut.csv
+# ============================================================

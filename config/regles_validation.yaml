@@ -1,0 +1,136 @@
+# Règles de Validation des Données
+# Version : 1.0 | Date : 2026-06-01
+# Ce fichier est la référence pour le script scripts/qualite/validation.py
+# Voir aussi : framework/02-qualite-donnees/regles-qualite.yaml pour la documentation complète
+
+version: "1.0"
+date_mise_a_jour: "2026-06-01"
+responsable: "Bureau de Gouvernance des Données"
+
+# Seuils globaux
+seuils:
+  score_minimum_acceptable: 70
+  score_objectif: 85
+  score_excellent: 95
+
+# Règles par entité
+entites:
+
+  client:
+    champs_obligatoires:
+      - nom
+      - prenom
+      - telephone
+      - departement
+      - type_client
+    champs_cles_unicite:
+      - telephone
+    delai_fraicheur_jours: 365
+    regles:
+      - id: "CLI-001"
+        champ: "id_client"
+        type: "format"
+        pattern: "^CLI-\\d{6}$"
+        severite: "critique"
+      - id: "CLI-008"
+        champ: "telephone"
+        type: "format"
+        pattern: "^(\\+242)?0?[456]\\d{7}$"
+        severite: "important"
+      - id: "CLI-011"
+        champ: "departement"
+        type: "liste_valeurs"
+        valeurs:
+          - Brazzaville
+          - Pointe-Noire
+          - Bouenza
+          - Cuvette
+          - Cuvette-Ouest
+          - Kouilou
+          - Lékoumou
+          - Likouala
+          - Niari
+          - Plateaux
+          - Pool
+          - Sangha
+        severite: "important"
+      - id: "CLI-012"
+        champ: "type_client"
+        type: "liste_valeurs"
+        valeurs:
+          - Particulier
+          - Entreprise
+          - Administration
+          - ONG
+        severite: "important"
+
+  transaction:
+    champs_obligatoires:
+      - id_transaction
+      - montant
+      - devise
+      - date_transaction
+      - type_transaction
+      - statut
+    champs_cles_unicite:
+      - id_transaction
+    delai_fraicheur_jours: 90
+    regles:
+      - id: "TXN-001"
+        champ: "id_transaction"
+        type: "format"
+        pattern: "^TXN-\\d{4}-\\d{8}$"
+        severite: "critique"
+      - id: "TXN-006"
+        champ: "devise"
+        type: "liste_valeurs"
+        valeurs:
+          - XAF
+          - EUR
+          - USD
+          - GBP
+        severite: "critique"
+      - id: "TXN-009"
+        champ: "type_transaction"
+        type: "liste_valeurs"
+        valeurs:
+          - VENTE
+          - REMBOURSEMENT
+          - PAIEMENT
+          - TRANSFERT
+          - DEPOT
+          - RETRAIT
+          - FRAIS
+        severite: "critique"
+
+  produit:
+    champs_obligatoires:
+      - id_produit
+      - libelle
+      - categorie
+      - prix_unitaire
+      - unite_mesure
+    champs_cles_unicite:
+      - id_produit
+    delai_fraicheur_jours: 730
+    regles:
+      - id: "PRD-001"
+        champ: "id_produit"
+        type: "format"
+        pattern: "^PRD-[A-Z]{3}-\\d{4}$"
+        severite: "critique"
+      - id: "PRD-003"
+        champ: "categorie"
+        type: "liste_valeurs"
+        valeurs:
+          - Alimentaire
+          - Santé
+          - Électronique
+          - Textile
+          - BTP
+          - Services
+          - Agriculture
+          - Transport
+          - Éducation
+          - Énergie
+        severite: "important"

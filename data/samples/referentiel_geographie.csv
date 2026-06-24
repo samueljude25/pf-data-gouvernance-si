@@ -1,0 +1,44 @@
+code,pays,region,departement,ville,statut,population_estimee,latitude,longitude
+CG-BZV-BZV,Congo,Afrique centrale,Brazzaville,Brazzaville,Capitale nationale,2388000,-4.2634,15.2429
+CG-PNR-PNR,Congo,Afrique centrale,Pointe-Noire,Pointe-Noire,Capitale économique,1042000,-4.7761,11.8635
+CG-NIA-DOL,Congo,Afrique centrale,Niari,Dolisie,Chef-lieu département,267000,-4.1985,12.6667
+CG-BOU-MAD,Congo,Afrique centrale,Bouenza,Madingou,Chef-lieu département,342000,-4.1539,13.5464
+CG-CUV-OWA,Congo,Afrique centrale,Cuvette,Owando,Chef-lieu département,198000,-0.4825,15.9014
+CG-PLA-DJA,Congo,Afrique centrale,Plateaux,Djambala,Chef-lieu département,186000,-2.5191,14.7553
+CG-POO-KIN,Congo,Afrique centrale,Pool,Kinkala,Chef-lieu département,221000,-4.3626,14.7767
+CG-LIK-IMP,Congo,Afrique centrale,Likouala,Impfondo,Chef-lieu département,185000,1.6170,18.0614
+CG-SAN-OUE,Congo,Afrique centrale,Sangha,Ouesso,Chef-lieu département,99000,1.6136,16.0448
+CG-LEK-SIB,Congo,Afrique centrale,Lékoumou,Sibiti,Chef-lieu département,107000,-3.6833,13.3500
+CG-KOU-HIN,Congo,Afrique centrale,Kouilou,Hinda,Chef-lieu département,112000,-4.1500,11.7167
+CG-CUO-EWO,Congo,Afrique centrale,Cuvette-Ouest,Ewo,Chef-lieu département,75000,-0.8773,14.8189
+CG-NIA-NKA,Congo,Afrique centrale,Niari,Nkayi,Ville secondaire,112000,-4.1712,13.2864
+CG-BOU-LOU,Congo,Afrique centrale,Bouenza,Loutété,Ville secondaire,85000,-4.0872,13.8833
+CG-BZV-BAC,Congo,Afrique centrale,Brazzaville,Bacongo,Arrondissement Brazzaville,180000,-4.3000,15.2667
+CG-BZV-MAK,Congo,Afrique centrale,Brazzaville,Makélékélé,Arrondissement Brazzaville,220000,-4.3167,15.2500
+CG-BZV-MKA,Congo,Afrique centrale,Brazzaville,Moungali,Arrondissement Brazzaville,195000,-4.2667,15.2667
+CG-BZV-OUE,Congo,Afrique centrale,Brazzaville,Ouenzé,Arrondissement Brazzaville,205000,-4.2500,15.2833
+CG-BZV-TAL,Congo,Afrique centrale,Brazzaville,Talangaï,Arrondissement Brazzaville,185000,-4.2333,15.3000
+CG-BZV-MFO,Congo,Afrique centrale,Brazzaville,Mfilou,Arrondissement Brazzaville,175000,-4.3167,15.2167
+CG-PNR-LUB,Congo,Afrique centrale,Pointe-Noire,Lubumu,Arrondissement Pointe-Noire,120000,-4.7833,11.8667
+CG-PNR-LWA,Congo,Afrique centrale,Pointe-Noire,Loandjili,Arrondissement Pointe-Noire,115000,-4.7500,11.8333
+CM-YAO,Cameroun,Afrique centrale,,Yaoundé,Capitale,4500000,3.8667,11.5167
+CM-DLA,Cameroun,Afrique centrale,,Douala,Ville principale,4500000,4.0500,9.7000
+GA-LIB,Gabon,Afrique centrale,,Libreville,Capitale,830000,0.3901,9.4544
+GA-PGA,Gabon,Afrique centrale,,Port-Gentil,Ville principale,136000,-0.7193,8.7815
+CF-BAN,Centrafrique,Afrique centrale,,Bangui,Capitale,889000,4.3612,18.5550
+CD-KIN,RD Congo,Afrique centrale,,Kinshasa,Capitale,17000000,-4.3276,15.3136
+CD-LUB,RD Congo,Afrique centrale,,Lubumbashi,Ville principale,2500000,-11.6647,27.4794
+AO-LUA,Angola,Afrique centrale,,Luanda,Capitale,9000000,-8.8368,13.2343
+TD-NDJ,Tchad,Afrique centrale,,N'Djamena,Capitale,1500000,12.1048,15.0445
+GQ-MAL,Guinée équatoriale,Afrique centrale,,Malabo,Capitale,297000,3.7504,8.7371
+SN-DAK,Sénégal,Afrique de l'Ouest,,Dakar,Capitale,3730000,14.7167,-17.4677
+CI-ABJ,Côte d'Ivoire,Afrique de l'Ouest,,Abidjan,Capitale économique,5200000,5.3600,-4.0083
+GH-ACC,Ghana,Afrique de l'Ouest,,Accra,Capitale,2400000,5.5571,-0.2016
+NG-LAG,Nigeria,Afrique de l'Ouest,,Lagos,Ville principale,15000000,6.4531,3.3958
+ZA-CAP,Afrique du Sud,Afrique australe,,Le Cap,Capitale législative,4618000,-33.9249,18.4241
+KE-NAI,Kenya,Afrique de l'Est,,Nairobi,Capitale,4900000,-1.2921,36.8219
+ET-ADD,Ethiopie,Afrique de l'Est,,Addis-Abeba,Capitale,5000000,9.0300,38.7400
+MA-CAS,Maroc,Afrique du Nord,,Casablanca,Ville principale,4000000,33.5731,-7.5898
+EG-CAI,Egypte,Afrique du Nord,,Le Caire,Capitale,21000000,30.0444,31.2357
+FR-PAR,France,Europe,,Paris,Capitale,2100000,48.8566,2.3522
+BE-BRU,Belgique,Europe,,Bruxelles,Capitale,1200000,50.8503,4.3517

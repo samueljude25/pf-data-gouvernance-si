@@ -1,0 +1,98 @@
+# Configuration du Système de Qualité des Données
+# Version : 1.0 | Date : 2026-06-01
+
+version: "1.0"
+organisation: "[Nom de l'Organisation]"
+environnement: "production"
+
+# Fréquences d'évaluation de la qualité
+frequences_evaluation:
+  transactions: "quotidienne"
+  clients: "hebdomadaire"
+  produits: "mensuelle"
+  references: "mensuelle"
+  rapport_global: "mensuelle"
+
+# Poids des dimensions de qualité (doivent totaliser 1.0)
+poids_dimensions:
+  completude: 0.25
+  exactitude: 0.25
+  coherence: 0.20
+  actualite: 0.15
+  unicite: 0.10
+  validite: 0.05
+
+# Poids alternatifs par domaine
+poids_domaine_sante:
+  completude: 0.30
+  exactitude: 0.35
+  coherence: 0.20
+  actualite: 0.10
+  unicite: 0.05
+  validite: 0.00
+
+poids_domaine_financier:
+  completude: 0.20
+  exactitude: 0.30
+  coherence: 0.25
+  actualite: 0.15
+  unicite: 0.10
+  validite: 0.00
+
+# Seuils d'alerte et d'action
+seuils:
+  score_excellent: 95
+  score_bon: 85
+  score_acceptable: 70
+  score_insuffisant: 0
+
+  alerte_warning: 85
+  alerte_critique: 70
+  alerte_degradation_mensuelle: -5  # Alerte si baisse > 5 points en 1 mois
+
+# Délais de fraîcheur par domaine (en jours)
+delais_fraicheur:
+  clients: 365         # Mise à jour annuelle des données clients
+  transactions: 90     # Données financières récentes (3 mois)
+  produits: 730        # Catalogue produit (2 ans)
+  employes: 180        # Données RH (6 mois)
+  references: 1095     # Référentiels géographiques (3 ans)
+
+# Notifications
+notifications:
+  email_alerte_critique:
+    - role: "data_steward"
+    - role: "data_owner"
+    - role: "cdo"
+  email_alerte_warning:
+    - role: "data_steward"
+  dashboard:
+    - role: "cdo"
+    - role: "data_owner"
+    - role: "direction"
+
+# Chemins des fichiers de données
+chemins:
+  data_brut: "data/samples/dataset_brut.csv"
+  data_nettoye: "data/samples/dataset_nettoye.csv"
+  referentiel_clients: "data/samples/referentiel_clients.csv"
+  referentiel_geographie: "data/samples/referentiel_geographie.csv"
+  dictionnaire: "data/dictionnaires/dictionnaire_donnees.csv"
+  regles_validation: "config/regles_validation.yaml"
+  rapports: "rapports/"
+
+# Paramètres de déduplication MDM
+deduplication:
+  seuil_fusion_auto: 0.92     # Score >= 0.92 : fusion automatique
+  seuil_revision_manuelle: 0.85  # Score >= 0.85 : soumis à révision manuelle
+  algorithme: "jaro_winkler"
+  champs_comparaison:
+    - champ: "nom"
+      poids: 0.35
+    - champ: "prenom"
+      poids: 0.25
+    - champ: "telephone"
+      poids: 0.30
+    - champ: "email"
+      poids: 0.10
+  cle_blocage: "telephone"

@@ -1,0 +1,43 @@
+nom_champ,type,longueur,description,obligatoire,format_attendu,valeurs_autorisees,source,proprietaire,classification,exemple,regle_qualite,commentaire
+id_client,VARCHAR,10,Identifiant unique MDM du client,Oui,CLI-NNNNNN,,MDM,Directeur Commercial,CONFIDENTIEL,CLI-001234,CLI-001,Généré automatiquement par le hub MDM
+type_client,VARCHAR,20,Catégorie juridique du client,Oui,,"Particulier,Entreprise,Administration,ONG",CRM,Directeur Commercial,CONFIDENTIEL,Particulier,CLI-012,Liste fermée de valeurs autorisées
+nom,VARCHAR,100,Nom de famille ou raison sociale,Oui,Texte libre,,CRM,Directeur Commercial,CONFIDENTIEL,MOUYABI,CLI-002,Saisie en majuscules recommandée
+prenom,VARCHAR,100,Prénom(s) du client personne physique,Non,Texte libre,,CRM,Directeur Commercial,CONFIDENTIEL,Jean-Baptiste,CLI-004,Vide pour les personnes morales
+date_naissance,DATE,,Date de naissance — personnes physiques uniquement,Non,YYYY-MM-DD,,Système enregistrement,Directeur Commercial,CONFIDENTIEL,1985-03-12,CLI-005;CLI-006;CLI-007,Doit être dans le passé et cohérente avec l'âge minimum légal
+telephone,VARCHAR,15,Numéro de téléphone principal,Oui,+242XXXXXXXXX ou 0XXXXXXXXX,,CRM,Directeur Commercial,CONFIDENTIEL,+2420641234567,CLI-008;CLI-009,Format Congo-Brazzaville obligatoire
+email,VARCHAR,100,Adresse email principale du client,Non,user@domaine.extension,,CRM,Directeur Commercial,CONFIDENTIEL,jean.mouyabi@email.com,CLI-010,Validation format RFC 5322
+adresse,VARCHAR,200,Adresse postale complète,Non,Texte libre,,CRM,Directeur Commercial,CONFIDENTIEL,Rue de la Paix - Bacongo,,Peut être vide pour zones rurales sans adresse postale
+quartier,VARCHAR,100,Quartier ou zone géographique,Non,Texte libre,,CRM,Directeur Commercial,CONFIDENTIEL,Bacongo,,Particulièrement utile pour Brazzaville et Pointe-Noire
+ville,VARCHAR,100,Ville de résidence ou siège social,Oui,Texte libre,,CRM,Directeur Commercial,CONFIDENTIEL,Brazzaville,CLI-011,Doit correspondre au département
+departement,VARCHAR,50,Département de résidence selon découpage administratif Congo,Oui,,"Brazzaville,Pointe-Noire,Bouenza,Cuvette,Cuvette-Ouest,Kouilou,Lékoumou,Likouala,Niari,Plateaux,Pool,Sangha",CRM,Directeur Commercial,CONFIDENTIEL,Brazzaville,CLI-011,Liste des 12 départements officiels du Congo-Brazzaville
+pays,VARCHAR,50,Pays de résidence ou siège social,Oui,Texte libre,,CRM,Directeur Commercial,CONFIDENTIEL,Congo,,"Défaut : Congo. Utiliser le nom officiel complet"
+statut,VARCHAR,20,Statut actuel du client dans le système,Oui,,"Actif,Inactif,Prospect,Bloqué",CRM,Directeur Commercial,CONFIDENTIEL,Actif,CLI-012,Changement de statut requiert validation Data Steward
+date_creation,DATE,,Date de création de la fiche client,Oui,YYYY-MM-DD,,MDM,Directeur Commercial,CONFIDENTIEL,2025-06-15,CLI-013,Générée automatiquement à la création
+date_derniere_maj,TIMESTAMP,,Date et heure de la dernière modification,Oui,YYYY-MM-DD HH:MM:SS,,MDM,Directeur Commercial,CONFIDENTIEL,2026-03-15 14:30:22,,Mise à jour automatique à chaque modification
+source_creation,VARCHAR,50,Système ayant créé l'enregistrement initial,Oui,,"CRM,ERP,AGENCE,LEGACY,MDM",CRM,Directeur Commercial,INTERNE,CRM,,"Traçabilité de la source d'origine"
+score_confiance,DECIMAL,"5,2",Score MDM de confiance dans le golden record (0 à 100),Oui,NNN.NN,,MDM,CDO,INTERNE,87.50,,Calculé automatiquement par le hub MDM
+id_transaction,VARCHAR,20,Identifiant unique de la transaction,Oui,TXN-AAAA-NNNNNNNN,,ERP,Directeur Financier,CONFIDENTIEL,TXN-2026-00001234,TXN-001,Généré automatiquement par l'ERP
+id_client_ref,VARCHAR,10,Référence vers le client associé à la transaction,Oui,CLI-NNNNNN,,ERP,Directeur Financier,CONFIDENTIEL,CLI-001234,TXN-002,Intégrité référentielle avec la table clients
+montant,DECIMAL,"12,2",Montant de la transaction en FCFA,Oui,NNN.NN,,ERP,Directeur Financier,CONFIDENTIEL,45000.00,TXN-003;TXN-004;TXN-005,Toujours positif — les remboursements utilisent le type_transaction
+devise,VARCHAR,5,Code ISO 4217 de la devise utilisée,Oui,,"XAF,EUR,USD,GBP",ERP,Directeur Financier,CONFIDENTIEL,XAF,TXN-006,XAF = Franc CFA BEAC (zone CEMAC)
+date_transaction,DATETIME,,Date et heure de la transaction,Oui,YYYY-MM-DD HH:MM:SS,,ERP,Directeur Financier,CONFIDENTIEL,2026-06-15 10:30:45,TXN-007;TXN-008,Ne peut pas être dans le futur
+type_transaction,VARCHAR,20,Nature de l'opération financière,Oui,,"VENTE,REMBOURSEMENT,PAIEMENT,TRANSFERT,DEPOT,RETRAIT,FRAIS",ERP,Directeur Financier,CONFIDENTIEL,VENTE,TXN-009,
+statut_transaction,VARCHAR,20,Statut de traitement de la transaction,Oui,,"EN_ATTENTE,VALIDEE,REJETEE,ANNULEE,EN_COURS",ERP,Directeur Financier,CONFIDENTIEL,VALIDEE,TXN-010,
+id_produit,VARCHAR,12,Identifiant unique MDM du produit,Oui,PRD-CAT-NNNN,,MDM,Directeur Marketing,INTERNE,PRD-ALI-0042,PRD-001,Généré automatiquement par le hub MDM
+libelle,VARCHAR,200,Libellé complet du produit ou service,Oui,Texte libre,,Catalogue produit,Directeur Marketing,INTERNE,Huile de palme 1L,,Décrivant clairement le produit pour les utilisateurs
+categorie,VARCHAR,50,Catégorie principale du produit,Oui,,"Alimentaire,Santé,Électronique,Textile,BTP,Services,Agriculture,Transport,Éducation,Énergie",Catalogue produit,Directeur Marketing,INTERNE,Alimentaire,PRD-003,Référentiel des catégories géré par le Marketing
+prix_unitaire,DECIMAL,"10,2",Prix de vente unitaire en FCFA hors taxes,Oui,NNN.NN,,Finance,Directeur Marketing,INTERNE,5000.00,PRD-004,Ne peut pas être négatif. 0 = produit gratuit
+unite_mesure,VARCHAR,20,Unité de mesure pour la vente,Oui,,"Unité,Kg,g,L,mL,m,m²,m³,Tonne,Boîte,Carton,Sac,Service",ERP,Directeur Marketing,INTERNE,L,PRD-006,
+actif,BOOLEAN,,Indique si le produit est disponible à la vente,Oui,,"VRAI,FAUX",ERP,Directeur Marketing,INTERNE,VRAI,,Produit inactif = non proposé à la vente mais conservé dans l'historique
+nom_agent,VARCHAR,200,Nom et prénom de l'agent,Oui,Texte libre,,SIRH,DRH,CONFIDENTIEL,MOUYABI Jean,,
+matricule,VARCHAR,20,Matricule unique de l'agent dans l'organisation,Oui,AGT-NNNNNN,,SIRH,DRH,CONFIDENTIEL,AGT-001234,,Identifiant RH unique
+poste,VARCHAR,100,Intitulé du poste occupé,Oui,Texte libre,,SIRH,DRH,CONFIDENTIEL,Data Analyst,,
+direction,VARCHAR,100,Direction de rattachement de l'agent,Oui,Texte libre,,SIRH,DRH,INTERNE,DSI,,
+date_embauche,DATE,,Date d'embauche dans l'organisation,Oui,YYYY-MM-DD,,SIRH,DRH,CONFIDENTIEL,2022-01-15,,Ne peut pas être dans le futur
+type_contrat,VARCHAR,20,Type de contrat de travail,Oui,,"CDI,CDD,Stage,Prestataire,Consultant",SIRH,DRH,CONFIDENTIEL,CDI,,
+salaire_brut,DECIMAL,"10,2",Salaire brut mensuel en FCFA,Oui,NNN.NN,,SIRH,DRH,CONFIDENTIEL,450000.00,,Accès très restreint — classification CONFIDENTIEL
+code_departement,VARCHAR,10,Code officiel du département Congo-Brazzaville,Oui,CG-XXX,,Référentiel géographie,CDO,PUBLIC,CG-BZV,,"Code normalisé selon le découpage administratif officiel"
+libelle_departement,VARCHAR,50,Nom officiel du département,Oui,,"Brazzaville,Pointe-Noire,Bouenza,Cuvette,Cuvette-Ouest,Kouilou,Lékoumou,Likouala,Niari,Plateaux,Pool,Sangha",Référentiel géographie,CDO,PUBLIC,Brazzaville,,
+chef_lieu,VARCHAR,100,Ville chef-lieu du département,Oui,Texte libre,,Référentiel géographie,CDO,PUBLIC,Brazzaville,,
+superficie_km2,DECIMAL,"10,2",Superficie du département en km²,Non,NNN.NN,,Référentiel géographie,CDO,PUBLIC,100,,Source : Institut National de la Statistique du Congo
+population_estimee,INTEGER,,Population estimée du département,Non,NNNNNN,,Référentiel géographie,CDO,PUBLIC,2388000,,Estimation basée sur le recensement le plus récent disponible

@@ -1,0 +1,95 @@
+# Niveaux de Classification des Données
+# Version : 1.0 | Date : 2026-06-01
+# Référence : framework/03-securite-confidentialite/classification-donnees.md
+
+version: "1.0"
+
+niveaux:
+  PUBLIC:
+    code: 1
+    label: "Public"
+    couleur: "vert"
+    icone: "[P]"
+    description: "Données dont la divulgation au grand public est autorisée"
+    chiffrement_transit: false
+    chiffrement_repos: false
+    authentification: "aucune"
+    journalisation: false
+    mention_document: false
+    acces_externe: true
+
+  INTERNE:
+    code: 2
+    label: "Interne"
+    couleur: "jaune"
+    icone: "[I]"
+    description: "Données à usage interne uniquement"
+    chiffrement_transit: true
+    chiffrement_repos: false
+    authentification: "identifiant_mdp"
+    journalisation: false
+    mention_document: true
+    acces_externe: false
+    mention_requise: "INTERNE — Usage interne uniquement"
+
+  CONFIDENTIEL:
+    code: 3
+    label: "Confidentiel"
+    couleur: "orange"
+    icone: "[C]"
+    description: "Données sensibles dont la divulgation causerait un préjudice significatif"
+    chiffrement_transit: true
+    algorithme_transit: "TLS 1.3"
+    chiffrement_repos: true
+    algorithme_repos: "AES-128 minimum"
+    authentification: "MFA recommandé"
+    journalisation: true
+    mention_document: true
+    acces_externe: false
+    accord_confidentialite_requis: true
+    mention_requise: "CONFIDENTIEL — Diffusion restreinte"
+    revue_acces: "trimestrielle"
+
+  SECRET:
+    code: 4
+    label: "Secret"
+    couleur: "rouge"
+    icone: "[S]"
+    description: "Données hautement sensibles dont la divulgation causerait un préjudice grave et irréversible"
+    chiffrement_transit: true
+    algorithme_transit: "TLS 1.3 + VPN"
+    chiffrement_repos: true
+    algorithme_repos: "AES-256 obligatoire"
+    authentification: "MFA obligatoire + token physique"
+    journalisation: true
+    journalisation_temps_reel: true
+    mention_document: true
+    acces_externe: false
+    habilitation_dg_requise: true
+    mention_requise: "SECRET — Accès très restreint — Exemplaire N° XXX/YYY"
+    revue_acces: "mensuelle"
+    duree_max_acces_jours: 180
+
+# Règles de classification par type de données
+regles_classification:
+  donnees_personnelles_ordinaires: "CONFIDENTIEL"
+  donnees_personnelles_sensibles: "CONFIDENTIEL"    # Minimum
+  donnees_biometriques: "SECRET"
+  donnees_medicales: "CONFIDENTIEL"
+  donnees_financieres_detaillees: "CONFIDENTIEL"
+  donnees_financieres_agreges: "INTERNE"
+  donnees_rh_salaires: "CONFIDENTIEL"
+  donnees_rh_evaluations: "CONFIDENTIEL"
+  donnees_catalogue_produits: "INTERNE"
+  donnees_statistiques_agreges: "PUBLIC"
+  rapports_annuels_publics: "PUBLIC"
+  mots_de_passe: "SECRET"
+  cles_cryptographiques: "SECRET"
+  plans_strategiques: "CONFIDENTIEL"
+  procedures_internes: "INTERNE"
+
+# Conservation des logs par classification
+retention_logs:
+  INTERNE: 365      # 1 an
+  CONFIDENTIEL: 730 # 2 ans
+  SECRET: 1825      # 5 ans

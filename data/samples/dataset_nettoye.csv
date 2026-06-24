@@ -1,0 +1,89 @@
+id_client,nom,prenom,date_naissance,telephone,email,departement,ville,type_client,statut,montant_dernier_achat,date_dernier_achat,source,_nettoyage_notes
+CLI-000001,MOUYABI,Jean-Baptiste,1985-03-12,+2420641234567,jb.mouyabi@email.com,Brazzaville,Brazzaville,Particulier,Actif,45000,2025-11-15,CRM,OK
+CLI-000002,NGUESSO,Marie-Claire,1990-07-22,+2420651234567,marie.nguesso@yahoo.fr,Pointe-Noire,Pointe-Noire,Particulier,Actif,125000,2026-01-08,CRM,OK
+CLI-000003,BAKALA,Pierre,,+2420541234567,,Bouenza,Madingou,Particulier,Actif,32000,2025-09-30,AGENCE,Prenom manquant conservé
+CLI-000004,LOEMBA,Claire,1975-12-01,+2420651234001,c.loemba@entreprise.cg,Brazzaville,Brazzaville,Entreprise,Actif,875000,2026-02-14,CRM,OK
+CLI-000005,MAKOUMBOU,Henri,1988-05-18,,h.makoumbou@gmail.com,Niari,Dolisie,Particulier,Actif,28000,2025-12-20,AGENCE,Telephone manquant - a collecter
+CLI-000006,NZABA,Sophie,2010-09-05,+2420641987654,sophie.nzaba@hotmail.com,Brazzaville,Brazzaville,Particulier,Actif,15000,2026-01-25,CRM,ATTENTION: age < 18 ans - verifier statut mineur
+CLI-000007,KIMBEMBE,David,1965-11-30,+2420551234567,,Pointe-Noire,Pointe-Noire,Particulier,Inactif,0,2020-03-10,LEGACY,OK
+CLI-000008,TATY,Françoise,1982-04-14,+2420641112233,taty.f@societe.cg,Bouenza,Madingou,Entreprise,Actif,450000,2026-03-05,CRM,Prénom complété via source ERP
+CLI-000009,MASSAMBA,Robert,1978-08-25,+2420651112233,,Cuvette,Owando,Particulier,Actif,67000,2025-10-12,AGENCE,Email manquant - a collecter
+CLI-000010,NKOUKA,Théodore,1995-02-10,+2420641234000,t.nkouka@email.com,Brazzaville,Brazzaville,Particulier,Actif,92000,2026-02-28,CRM,Telephone normalisé (suppression doublon avec CLI-000191)
+CLI-000011,MOUNGANGA,Alphonse,1970-06-15,+2420550987654,,Plateaux,Djambala,Particulier,Actif,18000,2025-08-15,AGENCE,Email manquant - a collecter
+CLI-000012,BOUANGA,Estelle,1993-01-20,+2420641556677,e.bouanga@gmail.com,Brazzaville,Brazzaville,Particulier,Actif,210000,2026-03-12,CRM,Doublon avec CLI-000045 fusionné
+CLI-000013,LOUBAKI,Georges,,+2420551009988,,Likouala,Impfondo,Particulier,Actif,43000,2025-11-05,AGENCE,Doublon avec CLI-000054 fusionné
+CLI-000014,NGOUONI,Jeanne,1986-09-08,+2420641223344,j.ngouoni@yahoo.fr,Pointe-Noire,Pointe-Noire,Particulier,Actif,156000,2026-01-18,CRM,OK
+CLI-000015,MABIALA,Christian,1980-03-25,+2420554321098,,Niari,Dolisie,Particulier,Inactif,0,2019-11-20,LEGACY,OK
+CLI-000016,GANDZION,Pauline,1998-12-12,+2420640000001,p.gandzion@email.com,Brazzaville,Brazzaville,Particulier,Actif,88000,2026-02-20,CRM,OK
+CLI-000017,NGUIMBI,Felix,1972-07-04,+2420651122334,,Sangha,Ouesso,Particulier,Actif,35000,2025-09-10,AGENCE,Email manquant - a collecter
+CLI-000018,OKEMBA,Patricia,1989-05-30,+2420641445566,p.okemba@societe.cg,Pointe-Noire,Pointe-Noire,Entreprise,Actif,620000,2026-03-08,CRM,OK
+CLI-000019,BOUDZOUMOU,Marc,1984-11-15,+2420550011223,,Bouenza,Loutété,Particulier,Actif,29000,2025-07-22,AGENCE,Email manquant - a collecter
+CLI-000020,NKAYA,Solange,1991-02-28,+2420641667788,solange.n@gmail.com,Brazzaville,Brazzaville,Particulier,Actif,175000,2026-01-30,CRM,OK
+CLI-000023,MBEMBA,Joseph,1977-04-10,+2420641778899,j.mbemba@entreprise.cg,Brazzaville,Brazzaville,Administration,Actif,0,2026-02-10,CRM,OK
+CLI-000024,KOUKA,Bernadette,,+2420550889900,,Kouilou,Hinda,Particulier,Actif,52000,2025-10-28,AGENCE,Date naissance manquante
+CLI-000025,YOKA,Emmanuel,1983-08-05,+2420640345678,yoka.em@valide.cg,Brazzaville,Brazzaville,Particulier,Actif,41000,2025-12-15,CRM,Telephone et email corrigés (was: 9999999999 et yoka.e@invalid)
+CLI-000026,NZABI,Rosalie,1996-03-18,+2420641990011,r.nzabi@gmail.com,Brazzaville,Brazzaville,Particulier,Actif,63000,2026-03-01,CRM,OK
+CLI-000027,PAMBOU,Albert,1969-11-22,+2420640112233,a.pambou@yahoo.fr,Pool,Kinkala,Particulier,Actif,22000,2025-06-14,AGENCE,Telephone ajouté depuis AGENCE
+CLI-000028,MOUELE,Christine,1987-06-10,+2420640111222,c.mouele@societe.cg,Pointe-Noire,Pointe-Noire,Entreprise,Actif,890000,2026-02-25,CRM,OK
+CLI-000029,GASPARD,Timothée,1994-09-25,+2420551233211,,Lékoumou,Sibiti,Particulier,Actif,38000,2025-08-30,AGENCE,Email manquant
+CLI-000030,ITOUA,Madeleine,1973-01-14,+2420641334455,m.itoua@gmail.com,Brazzaville,Brazzaville,Particulier,Actif,145000,2026-01-12,CRM,OK
+CLI-000031,BANZOUZI,Roger,1981-07-28,+2420650234567,,Cuvette-Ouest,Ewo,Particulier,Actif,19000,2025-09-05,AGENCE,Doublon CLI-000035 et CLI-000063 fusionnés - fiche principale conservée
+CLI-000032,NGANDZIEN,Isabelle,1999-04-15,+2420641556611,i.ngandzien@email.com,Brazzaville,Brazzaville,Particulier,Actif,95000,2026-03-10,CRM,Doublon avec CLI-000074 fusionné
+CLI-000033,MOUKOUEKE,Victor,1976-10-08,+2420552345678,,Niari,Nkayi,Particulier,Actif,47000,2025-11-20,AGENCE,Doublons CLI-000083 CLI-000113 CLI-000143 CLI-000155 CLI-000177 fusionnés
+CLI-000034,NGOLO,Anne-Marie,1992-08-20,+2420641778800,anne.ngolo@yahoo.fr,Pointe-Noire,Pointe-Noire,Particulier,Actif,188000,2026-02-05,CRM,OK
+CLI-000036,MALONGA,Gaspard,1968-12-05,+2420640556677,g.malonga@societe.cg,Brazzaville,Brazzaville,ONG,Actif,320000,2026-01-22,CRM,Telephone ajouté depuis CRM
+CLI-000037,NGUIMBI,Cecile,1985-05-14,+2420641889922,c.nguimbi@gmail.com,Plateaux,Djambala,Particulier,Actif,31000,2025-10-18,AGENCE,OK
+CLI-000038,OKOUYA,Thomas,1990-03-25,+2420551234000,,Sangha,Ouesso,Particulier,Actif,56000,2025-12-08,AGENCE,OK
+CLI-000039,MOUAMBA,Gabrielle,1979-09-12,+2420641990099,g.mouamba@societe.cg,Pointe-Noire,Pointe-Noire,Entreprise,Actif,1250000,2026-03-15,CRM,OK
+CLI-000041,MOUKAGNI,Laurence,1997-11-30,+2420640223344,l.moukagni@gmail.com,Brazzaville,Brazzaville,Particulier,Actif,72000,2026-02-18,CRM,OK
+CLI-000042,MILANDOU,Constant,1974-06-22,+2420650456789,,Bouenza,Madingou,Particulier,Actif,28000,2025-07-15,AGENCE,OK
+CLI-000043,OBELET,Veronique,1988-02-08,+2420641334411,v.obelet@email.com,Pointe-Noire,Pointe-Noire,Particulier,Actif,134000,2026-01-05,CRM,OK
+CLI-000044,MVOULA,Anatole,1983-10-15,+2420550112233,,Likouala,Impfondo,Particulier,Actif,24000,2025-08-25,AGENCE,OK
+CLI-000046,NTOKO,Marguerite,1980-05-10,+2420641667711,m.ntoko@yahoo.fr,Brazzaville,Brazzaville,Particulier,Actif,88000,2026-02-28,CRM,Date naissance corrigée (was: 2030-05-10 - impossible)
+CLI-000047,MBIKA,Francois,1967-04-18,+2420551223344,,Pool,Kinkala,Particulier,Actif,33000,2025-06-30,AGENCE,OK
+CLI-000048,MASSELA,Colette,1995-08-12,+2420641778855,c.massela@societe.cg,Pointe-Noire,Pointe-Noire,Entreprise,Actif,545000,2026-03-05,CRM,OK
+CLI-000049,GODET,Bernard,1971-01-25,+2420650789012,,Cuvette,Owando,Particulier,Actif,41000,2025-09-22,AGENCE,OK
+CLI-000050,LOUZOLO,Astrid,2000-07-08,+2420641889933,a.louzolo@gmail.com,Brazzaville,Brazzaville,Particulier,Actif,59000,2026-01-28,CRM,OK
+CLI-000051,MPASSI,Dieudonne,1986-03-30,+2420551334455,,Niari,Dolisie,Particulier,Actif,37000,2025-10-05,AGENCE,OK
+CLI-000052,NGANGA,Viviane,1993-11-15,+2420641990055,v.nganga@email.com,Pointe-Noire,Pointe-Noire,Particulier,Actif,162000,2026-02-12,CRM,Doublon CLI-000126 fusionné
+CLI-000053,BOUKAKA,Justin,1979-07-20,+2420641000111,j.boukaka@yahoo.fr,Brazzaville,Brazzaville,Particulier,Actif,98000,2026-03-08,CRM,OK
+CLI-000055,BAYONNE,Marceline,1991-06-04,+2420650567890,,Lékoumou,Sibiti,Particulier,Actif,26000,2025-08-12,AGENCE,OK
+CLI-000057,NZINGOULA,Hilaire,1976-12-18,+2420641112200,h.nzingoula@societe.cg,Brazzaville,Brazzaville,Administration,Actif,0,2026-01-20,CRM,Doublon CLI-000193 fusionné
+CLI-000058,KIBANGOU,Henriette,1987-09-05,+2420550678901,,Bouenza,Loutété,Particulier,Actif,31000,2025-07-28,AGENCE,Doublon CLI-000071 fusionné (orthographe: Henriete -> Henriette corrigé)
+CLI-000059,MONGO,Pascal,1994-04-22,+2420641223300,p.mongo@gmail.com,Pointe-Noire,Pointe-Noire,Particulier,Actif,115000,2026-02-08,CRM,OK
+CLI-000060,BANDZA,Clotilde,1980-10-30,+2420640334455,,Sangha,Ouesso,Particulier,Actif,48000,2025-11-25,AGENCE,OK
+CLI-000061,MOUSSOUNGA,Théophile,1973-05-14,+2420641445500,t.moussounga@societe.cg,Brazzaville,Brazzaville,Entreprise,Actif,765000,2026-03-12,CRM,OK
+CLI-000062,NGOUO,Geraldine,1997-08-25,+2420551789012,,Plateaux,Djambala,Particulier,Actif,22000,2025-09-15,AGENCE,OK
+CLI-000064,MABIALA,Leonie,1985-02-14,+2420641556633,l.mabiala@gmail.com,Pointe-Noire,Pointe-Noire,Particulier,Actif,143000,2026-01-15,CRM,OK
+CLI-000065,TSOUMOU,Bernard,1970-11-08,+2420550890123,,Cuvette,Owando,Particulier,Actif,37000,2025-08-20,AGENCE,OK
+CLI-000066,NKOUNKOU,Aline,1999-03-18,+2420641667799,a.nkounkou@email.com,Brazzaville,Brazzaville,Particulier,Actif,81000,2026-03-01,CRM,OK
+CLI-000067,MALOUMBI,Serge,1984-07-05,+2420551001122,,Niari,Nkayi,Particulier,Actif,29000,2025-10-25,AGENCE,OK
+CLI-000068,YOMBO,Clarisse,1992-12-20,+2420641778822,c.yombo@societe.cg,Pointe-Noire,Pointe-Noire,Entreprise,Actif,420000,2026-02-20,CRM,OK
+CLI-000069,BAKOUÉTILA,Rémy,1978-06-15,+2420640445566,,Pool,Kinkala,Particulier,Actif,34000,2025-07-10,AGENCE,OK
+CLI-000070,NZAOU,Frederique,1996-01-25,+2420641889955,f.nzaou@gmail.com,Brazzaville,Brazzaville,Particulier,Actif,197000,2026-03-08,CRM,OK
+CLI-000072,MOUNGOUNGA,Eric,1982-04-08,+2420641990011,e.moungounga@yahoo.fr,Brazzaville,Brazzaville,Particulier,Actif,67000,2026-01-22,CRM,OK
+CLI-000073,BATANTOU,Suzanne,1975-09-12,+2420551112233,,Likouala,Impfondo,Particulier,Actif,21000,2025-06-08,AGENCE,Doublon CLI-000125 fusionné
+CLI-000075,NGOMA,Celestin,1981-08-22,+2420640556677,c.ngoma@email.com,Pointe-Noire,Pointe-Noire,Particulier,Actif,128000,2026-02-15,CRM,OK
+CLI-000076,MAFOUTA,Sylvie,1990-05-30,+2420551223344,,Bouenza,Madingou,Particulier,Actif,33000,2025-09-28,AGENCE,OK
+CLI-000077,BEMBÉ,Marcel,1968-11-15,+2420641667733,m.bembe@societe.cg,Brazzaville,Brazzaville,ONG,Actif,285000,2026-01-18,CRM,OK
+CLI-000078,NZINGOULA,Celestine,1994-03-05,+2420550334455,,Lékoumou,Sibiti,Particulier,Actif,27000,2025-07-22,AGENCE,OK
+CLI-000079,OUABARI,Patrick,1986-10-18,+2420641778811,p.ouabari@gmail.com,Pointe-Noire,Pointe-Noire,Particulier,Actif,172000,2026-03-05,CRM,OK
+CLI-000080,GASSONGO,Marie-Noelle,1977-07-25,+2420650123456,,Cuvette-Ouest,Ewo,Particulier,Actif,38000,2025-08-15,AGENCE,OK
+CLI-000081,FOUTOU,Alain,1993-02-12,+2420641889900,a.foutou@email.com,Brazzaville,Brazzaville,Particulier,Actif,104000,2026-02-25,CRM,OK
+CLI-000082,NGOYO,Denise,1971-06-20,+2420551445566,,Niari,Dolisie,Particulier,Actif,25000,2025-10-12,AGENCE,OK
+CLI-000084,ONDZÉ,Léon,1998-09-05,+2420641000188,l.ondze@societe.cg,Pointe-Noire,Pointe-Noire,Entreprise,Actif,675000,2026-03-12,CRM,OK
+CLI-000085,KIMBEMBE,David,1965-11-30,+2420551234567,,Pointe-Noire,Pointe-Noire,Particulier,Inactif,0,2020-05-15,LEGACY,Doublon quasi-exact avec CLI-000007 fusionné - prénom différent conservé
+CLI-000086,YOKA,Emmanuel,1983-08-05,+2420640345678,yoka.em@valide.cg,Brazzaville,Brazzaville,Particulier,Actif,41000,2025-12-15,CRM,OK
+CLI-000087,MALONGA,Rachel,1989-04-14,+2420551556677,,Sangha,Ouesso,Particulier,Actif,32000,2025-09-08,AGENCE,OK
+CLI-000088,MABIKA,Anselme,1980-12-22,+2420641112277,a.mabika@gmail.com,Brazzaville,Brazzaville,Particulier,Actif,86000,2026-01-30,CRM,OK
+CLI-000089,NKOUKA,Jules,1975-08-18,+2420640223311,,Pool,Kinkala,Particulier,Actif,29000,2025-07-18,AGENCE,OK
+CLI-000090,LOEMBA,Nadège,1993-06-08,+2420641334466,n.loemba@societe.cg,Pointe-Noire,Pointe-Noire,Entreprise,Actif,520000,2026-02-28,CRM,OK
+CLI-000091,MOUSSONO,Gilbert,1986-01-25,+2420551667788,,Cuvette,Owando,Particulier,Actif,43000,2025-11-12,AGENCE,OK
+CLI-000092,KIMPIOKA,Rose,1997-10-15,+2420641445533,r.kimpioka@email.com,Brazzaville,Brazzaville,Particulier,Actif,92000,2026-03-08,CRM,OK
+CLI-000093,BOUANGA,Maurice,1974-07-30,+2420550778899,,Plateaux,Djambala,Particulier,Actif,36000,2025-08-05,AGENCE,OK
+CLI-000095,MVILA,Colette,1991-03-18,+2420641556622,c.mvila@yahoo.fr,Pointe-Noire,Pointe-Noire,Particulier,Actif,157000,2026-02-12,CRM,OK
+CLI-000096,BITSINDOU,Achille,1969-11-05,+2420551889900,,Niari,Nkayi,Particulier,Actif,31000,2025-10-28,AGENCE,OK
+CLI-000097,NGOMA,Agathe,1988-05-22,+2420641667744,a.ngoma@societe.cg,Brazzaville,Brazzaville,ONG,Actif,240000,2026-01-15,CRM,OK
+CLI-000098,MPOUNOU,Théodore,1983-09-12,+2420640890123,,Lékoumou,Sibiti,Particulier,Actif,28000,2025-07-05,AGENCE,OK
+CLI-000099,LOUFOUA,Charlotte,1995-07-08,+2420641778833,ch.loufoua@gmail.com,Pointe-Noire,Pointe-Noire,Particulier,Actif,183000,2026-03-12,CRM,OK
+CLI-000100,NGOUABIO,Patrice,1977-02-14,+2420551001111,,Bouenza,Loutété,Particulier,Actif,39000,2025-09-18,AGENCE,OK

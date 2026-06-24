@@ -1,0 +1,509 @@
+# Règles de Qualité des Données
+# Version : 1.0 | Date : 2026-06-01
+# Référentiel : DAMA-DMBOK / ISO 8000
+# Contexte : Organisations Afrique centrale / Congo-Brazzaville
+
+version: "1.0"
+metadata:
+  auteur: "Bureau de Gouvernance des Données"
+  date_creation: "2026-06-01"
+  derniere_revision: "2026-06-01"
+  domaine_application: "Toutes entités maîtres et transactionnelles"
+
+# ============================================================
+# ENTITÉ : CLIENT
+# ============================================================
+entites:
+  client:
+    description: "Personne physique ou morale cliente de l'organisation"
+    data_owner: "Directeur Commercial"
+    data_steward: "Responsable CRM"
+    classification: "Confidentiel"
+
+    champs:
+      id_client:
+        type: "string"
+        obligatoire: true
+        unique: true
+        format: "^CLI-[0-9]{6}$"
+        description: "Identifiant unique client"
+        exemple: "CLI-001234"
+        regles:
+          - id: "CLI-001"
+            nom: "Format identifiant client"
+            description: "L'identifiant doit respecter le format CLI-XXXXXX"
+            severite: "critique"
+            action_si_violation: "rejeter"
+
+      nom:
+        type: "string"
+        obligatoire: true
+        longueur_min: 2
+        longueur_max: 100
+        description: "Nom de famille ou raison sociale"
+        regles:
+          - id: "CLI-002"
+            nom: "Nom non vide"
+            description: "Le nom ne peut pas être vide ou uniquement des espaces"
+            severite: "critique"
+            action_si_violation: "bloquer"
+          - id: "CLI-003"
+            nom: "Nom sans caractères spéciaux interdits"
+            description: "Le nom ne doit pas contenir de chiffres ou caractères <>&;"
+            severite: "avertissement"
+            action_si_violation: "signaler"
+
+      prenom:
+        type: "string"
+        obligatoire: true
+        longueur_min: 2
+        longueur_max: 100
+        description: "Prénom(s) du client personne physique"
+        regles:
+          - id: "CLI-004"
+            nom: "Prénom non vide"
+            severite: "critique"
+            action_si_violation: "bloquer"
+
+      date_naissance:
+        type: "date"
+        format: "YYYY-MM-DD"
+        obligatoire: false
+        description: "Date de naissance (personnes physiques uniquement)"
+        regles:
+          - id: "CLI-005"
+            nom: "Date de naissance dans le passé"
+            description: "La date de naissance doit être antérieure à aujourd'hui"
+            condition: "date_naissance < date_aujourd_hui"
+            severite: "critique"
+            action_si_violation: "rejeter"
+          - id: "CLI-006"
+            nom: "Âge minimum"
+            description: "Le client doit avoir au moins 18 ans"
+            condition: "age >= 18"
+            severite: "avertissement"
+            action_si_violation: "signaler"
+          - id: "CLI-007"
+            nom: "Âge maximum raisonnable"
+            description: "L'âge ne peut pas dépasser 120 ans"
+            condition: "age <= 120"
+            severite: "critique"
+            action_si_violation: "rejeter"
+
+      telephone:
+        type: "string"
+        obligatoire: true
+        description: "Numéro de téléphone principal"
+        regles:
+          - id: "CLI-008"
+            nom: "Format téléphone Congo"
+            description: "Numéro Congo-Brazzaville : 0[456][0-9]{7} ou +242[456][0-9]{7}"
+            format: "^(\\+242)?0?[456][0-9]{7}$"
+            severite: "important"
+            action_si_violation: "signaler"
+          - id: "CLI-009"
+            nom: "Téléphone non vide"
+            severite: "important"
+            action_si_violation: "signaler"
+
+      email:
+        type: "string"
+        obligatoire: false
+        description: "Adresse email du client"
+        regles:
+          - id: "CLI-010"
+            nom: "Format email valide"
+            format: "^[a-zA-Z0-9._%+\\-]+@[a-zA-Z0-9.\\-]+\\.[a-zA-Z]{2,}$"
+            severite: "important"
+            action_si_violation: "signaler"
+
+      departement:
+        type: "string"
+        obligatoire: true
+        description: "Département de résidence (Congo-Brazzaville)"
+        liste_valeurs_autorisees:
+          - "Brazzaville"
+          - "Pointe-Noire"
+          - "Bouenza"
+          - "Cuvette"
+          - "Cuvette-Ouest"
+          - "Kouilou"
+          - "Lékoumou"
+          - "Likouala"
+          - "Niari"
+          - "Plateaux"
+          - "Pool"
+          - "Sangha"
+        regles:
+          - id: "CLI-011"
+            nom: "Département dans la liste officielle"
+            description: "Le département doit appartenir aux 12 départements du Congo"
+            severite: "important"
+            action_si_violation: "signaler"
+
+      type_client:
+        type: "string"
+        obligatoire: true
+        liste_valeurs_autorisees:
+          - "Particulier"
+          - "Entreprise"
+          - "Administration"
+          - "ONG"
+        regles:
+          - id: "CLI-012"
+            nom: "Type client valide"
+            severite: "important"
+            action_si_violation: "bloquer"
+
+      date_creation:
+        type: "date"
+        format: "YYYY-MM-DD"
+        obligatoire: true
+        regles:
+          - id: "CLI-013"
+            nom: "Date de création dans le passé ou aujourd'hui"
+            condition: "date_creation <= date_aujourd_hui"
+            severite: "critique"
+            action_si_violation: "rejeter"
+
+    regles_ensemble:
+      - id: "CLI-E01"
+        nom: "Unicité client par téléphone"
+        description: "Deux clients ne peuvent avoir le même numéro de téléphone"
+        type: "unicite"
+        champs_cles: ["telephone"]
+        severite: "critique"
+        action_si_violation: "signaler_doublon"
+      - id: "CLI-E02"
+        nom: "Unicité client par email"
+        description: "Deux clients ne peuvent avoir la même adresse email"
+        type: "unicite"
+        champs_cles: ["email"]
+        condition: "email IS NOT NULL"
+        severite: "important"
+        action_si_violation: "signaler_doublon"
+
+# ============================================================
+# ENTITÉ : TRANSACTION
+# ============================================================
+  transaction:
+    description: "Opération financière ou commerciale enregistrée"
+    data_owner: "Directeur Financier"
+    data_steward: "Contrôleur de gestion"
+    classification: "Confidentiel"
+
+    champs:
+      id_transaction:
+        type: "string"
+        obligatoire: true
+        unique: true
+        format: "^TXN-[0-9]{4}-[0-9]{8}$"
+        description: "Identifiant unique transaction (TXN-AAAA-NNNNNNNN)"
+        exemple: "TXN-2026-00001234"
+        regles:
+          - id: "TXN-001"
+            nom: "Format identifiant transaction"
+            severite: "critique"
+            action_si_violation: "rejeter"
+
+      id_client:
+        type: "string"
+        obligatoire: true
+        description: "Référence vers le client associé"
+        regles:
+          - id: "TXN-002"
+            nom: "Client existant"
+            description: "L'id_client doit exister dans la table client"
+            type: "integrite_referentielle"
+            table_reference: "client"
+            champ_reference: "id_client"
+            severite: "critique"
+            action_si_violation: "rejeter"
+
+      montant:
+        type: "decimal"
+        precision: 2
+        obligatoire: true
+        description: "Montant de la transaction en FCFA"
+        regles:
+          - id: "TXN-003"
+            nom: "Montant positif"
+            condition: "montant > 0"
+            severite: "critique"
+            action_si_violation: "rejeter"
+          - id: "TXN-004"
+            nom: "Montant raisonnable"
+            description: "Montant inférieur au seuil maximal autorisé sans justificatif"
+            condition: "montant <= 50000000"
+            severite: "avertissement"
+            action_si_violation: "signaler"
+          - id: "TXN-005"
+            nom: "Montant non nul"
+            condition: "montant != 0"
+            severite: "critique"
+            action_si_violation: "rejeter"
+
+      devise:
+        type: "string"
+        obligatoire: true
+        liste_valeurs_autorisees:
+          - "XAF"  # Franc CFA BEAC
+          - "EUR"
+          - "USD"
+          - "GBP"
+        regles:
+          - id: "TXN-006"
+            nom: "Devise autorisée"
+            severite: "critique"
+            action_si_violation: "rejeter"
+
+      date_transaction:
+        type: "datetime"
+        format: "YYYY-MM-DD HH:MM:SS"
+        obligatoire: true
+        regles:
+          - id: "TXN-007"
+            nom: "Date transaction dans le passé"
+            condition: "date_transaction <= datetime_maintenant"
+            severite: "critique"
+            action_si_violation: "rejeter"
+          - id: "TXN-008"
+            nom: "Date transaction non trop ancienne"
+            description: "Une transaction ne peut pas être antérieure à l'ouverture du système"
+            condition: "date_transaction >= '2020-01-01'"
+            severite: "avertissement"
+            action_si_violation: "signaler"
+
+      type_transaction:
+        type: "string"
+        obligatoire: true
+        liste_valeurs_autorisees:
+          - "VENTE"
+          - "REMBOURSEMENT"
+          - "PAIEMENT"
+          - "TRANSFERT"
+          - "DEPOT"
+          - "RETRAIT"
+          - "FRAIS"
+        regles:
+          - id: "TXN-009"
+            nom: "Type transaction valide"
+            severite: "critique"
+            action_si_violation: "rejeter"
+
+      statut:
+        type: "string"
+        obligatoire: true
+        liste_valeurs_autorisees:
+          - "EN_ATTENTE"
+          - "VALIDEE"
+          - "REJETEE"
+          - "ANNULEE"
+          - "EN_COURS"
+        regles:
+          - id: "TXN-010"
+            nom: "Statut valide"
+            severite: "critique"
+            action_si_violation: "rejeter"
+
+    regles_ensemble:
+      - id: "TXN-E01"
+        nom: "Unicité transaction"
+        description: "Un id_transaction ne peut apparaître qu'une seule fois"
+        type: "unicite"
+        champs_cles: ["id_transaction"]
+        severite: "critique"
+        action_si_violation: "rejeter"
+      - id: "TXN-E02"
+        nom: "Cohérence montant et type"
+        description: "Un REMBOURSEMENT doit avoir un montant <= montant de la transaction initiale"
+        type: "coherence_metier"
+        severite: "important"
+        action_si_violation: "signaler"
+
+# ============================================================
+# ENTITÉ : PRODUIT
+# ============================================================
+  produit:
+    description: "Bien ou service proposé par l'organisation"
+    data_owner: "Directeur Marketing"
+    data_steward: "Chef de produit"
+    classification: "Interne"
+
+    champs:
+      id_produit:
+        type: "string"
+        obligatoire: true
+        unique: true
+        format: "^PRD-[A-Z]{3}-[0-9]{4}$"
+        description: "Identifiant produit (PRD-CAT-NNNN)"
+        exemple: "PRD-ALI-0042"
+        regles:
+          - id: "PRD-001"
+            nom: "Format identifiant produit"
+            severite: "critique"
+            action_si_violation: "rejeter"
+
+      libelle:
+        type: "string"
+        obligatoire: true
+        longueur_min: 3
+        longueur_max: 200
+        regles:
+          - id: "PRD-002"
+            nom: "Libellé non vide"
+            severite: "critique"
+            action_si_violation: "bloquer"
+
+      categorie:
+        type: "string"
+        obligatoire: true
+        liste_valeurs_autorisees:
+          - "Alimentaire"
+          - "Santé"
+          - "Électronique"
+          - "Textile"
+          - "BTP"
+          - "Services"
+          - "Agriculture"
+          - "Transport"
+          - "Éducation"
+          - "Énergie"
+        regles:
+          - id: "PRD-003"
+            nom: "Catégorie valide"
+            severite: "important"
+            action_si_violation: "signaler"
+
+      prix_unitaire:
+        type: "decimal"
+        precision: 2
+        obligatoire: true
+        description: "Prix unitaire en FCFA HT"
+        regles:
+          - id: "PRD-004"
+            nom: "Prix positif"
+            condition: "prix_unitaire >= 0"
+            severite: "critique"
+            action_si_violation: "rejeter"
+          - id: "PRD-005"
+            nom: "Prix non nul pour produits payants"
+            condition: "prix_unitaire > 0 OR type_produit == 'GRATUIT'"
+            severite: "important"
+            action_si_violation: "signaler"
+
+      unite_mesure:
+        type: "string"
+        obligatoire: true
+        liste_valeurs_autorisees:
+          - "Unité"
+          - "Kg"
+          - "g"
+          - "L"
+          - "mL"
+          - "m"
+          - "m²"
+          - "m³"
+          - "Tonne"
+          - "Boîte"
+          - "Carton"
+          - "Sac"
+          - "Service"
+        regles:
+          - id: "PRD-006"
+            nom: "Unité de mesure valide"
+            severite: "important"
+            action_si_violation: "signaler"
+
+      actif:
+        type: "boolean"
+        obligatoire: true
+        description: "Indique si le produit est actif dans le catalogue"
+
+      date_creation:
+        type: "date"
+        format: "YYYY-MM-DD"
+        obligatoire: true
+        regles:
+          - id: "PRD-007"
+            nom: "Date de création valide"
+            condition: "date_creation <= date_aujourd_hui"
+            severite: "critique"
+            action_si_violation: "rejeter"
+
+# ============================================================
+# CONFIGURATION DES SEUILS DE QUALITÉ
+# ============================================================
+seuils_qualite:
+  score_minimum_acceptable: 70
+  score_objectif: 85
+  score_excellent: 95
+
+  par_dimension:
+    completude:
+      poids: 0.25
+      seuil_alerte: 90
+      seuil_blocage: 70
+    exactitude:
+      poids: 0.25
+      seuil_alerte: 85
+      seuil_blocage: 70
+    coherence:
+      poids: 0.20
+      seuil_alerte: 95
+      seuil_blocage: 85
+    actualite:
+      poids: 0.15
+      seuil_alerte: 80
+      seuil_blocage: 60
+    unicite:
+      poids: 0.10
+      seuil_alerte: 95
+      seuil_blocage: 90
+    validite:
+      poids: 0.05
+      seuil_alerte: 90
+      seuil_blocage: 80
+
+# ============================================================
+# ACTIONS CORRECTIVES AUTOMATIQUES
+# ============================================================
+actions_correctives:
+  rejeter:
+    description: "L'enregistrement est rejeté et mis en quarantaine"
+    notification: ["data_steward", "data_owner"]
+    log: true
+
+  bloquer:
+    description: "La saisie est bloquée jusqu'à correction"
+    notification: ["utilisateur"]
+    log: true
+
+  signaler:
+    description: "L'anomalie est signalée mais l'enregistrement est accepté"
+    notification: ["data_steward"]
+    log: true
+
+  signaler_doublon:
+    description: "Un doublon potentiel est signalé pour revue manuelle"
+    notification: ["data_steward"]
+    quarantaine: true
+    log: true
+
+# ============================================================
+# NOTIFICATIONS ET ALERTES
+# ============================================================
+alertes:
+  seuil_alerte_global: 85
+  seuil_critique_global: 70
+  frequence_evaluation: "quotidienne"
+  destinataires_alertes:
+    - role: "data_steward"
+      canal: "email"
+      niveau_minimum: "important"
+    - role: "data_owner"
+      canal: "email"
+      niveau_minimum: "critique"
+    - role: "cdo"
+      canal: "dashboard"
+      niveau_minimum: "avertissement"
